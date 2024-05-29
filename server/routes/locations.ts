@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/:id', async (req, res, next) => {
-  const { id } = req.params
+  const id = Number(req.params.id)
   try {
     // TODO: Get the location based on its id and replace this viewData
     const location = await db.getLocationById(id)
@@ -39,6 +39,7 @@ router.patch('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
     const { name, description } = req.body
     // TODO: call db.updateLocation with these details
+    await db.updateLocation(id, name, description)
     res.sendStatus(204)
   } catch (e) {
     next(e)

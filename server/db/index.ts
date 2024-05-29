@@ -25,13 +25,24 @@ export async function getEventsByDay(day: string) {
       'time',
       'events.name as eventName',
       'events.description as description',
-      'locations.name as locatonName',
+      'locations.name as locationName',
     )
     .where({ day })
   return events as Event[]
 }
 
-export async function getLocationById(id: string) {
+export async function getLocationById(id: number) {
   const location = await db('locations').select().where({ id }).first()
-  return location
+  return location as Location
+}
+
+export async function updateLocation(
+  id: number,
+  name: string,
+  description: string,
+) {
+  const newLocation = await db('locations')
+    .where({ id })
+    .update({ name, description })
+  return newLocation
 }
