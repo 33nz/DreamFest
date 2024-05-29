@@ -16,7 +16,6 @@ export async function getAllLocations() {
 }
 
 export async function getEventsByDay(day: string) {
-  console.log(day)
   const events = await db('events')
     .join('locations', 'locations.id', 'events.location_id')
     .select(
@@ -45,4 +44,27 @@ export async function updateLocation(
     .where({ id })
     .update({ name, description })
   return newLocation
+}
+
+export async function addNewEvent({
+  locationId,
+  day,
+  time,
+  name,
+  description,
+}: EventData) {
+  const newEvent = await db('events').insert({
+    location_id: locationId,
+    day,
+    time,
+    name,
+    description,
+  })
+  console.log(newEvent)
+  return newEvent[0]
+}
+
+export async function deleteEvent(id: number) {
+  const event = await db('events').where({ id }).del()
+  return event
 }
