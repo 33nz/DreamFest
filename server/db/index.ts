@@ -30,3 +30,8 @@ export async function getEventsByDay(day: string) {
     .where({ day })
   return events as Event[]
 }
+
+export async function getLocationById(id: string) {
+  const location = await db('locations').select().where({ id }).first()
+  return location
+}
