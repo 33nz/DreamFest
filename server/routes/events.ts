@@ -32,6 +32,7 @@ router.delete('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
     // TODO: DELETE the event with this matching ID
     const del = await db.deleteEvent(id)
+    res.sendStatus(201)
   } catch (e) {
     next(e)
   }
