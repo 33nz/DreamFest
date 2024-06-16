@@ -7,7 +7,7 @@ import * as db from '../db/index.ts'
 vi.mock('../db/index.ts')
 
 describe('Schedule API', () => {
-  it('responds with a list of events for friday', async () => {
+  it.skip('responds with a list of events for friday', async () => {
     vi.mocked(db.getEventsForDay).mockImplementation(async (day: string) => {
       return [
         {

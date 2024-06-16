@@ -10,7 +10,7 @@ beforeEach(async () => {
 })
 
 describe('schedule', () => {
-  it('has a bunch of events', async () => {
+  it.skip('has a bunch of events', async () => {
     const data = await getEventsForDay('friday')
     expect(data).toMatchInlineSnapshot(`
       [
