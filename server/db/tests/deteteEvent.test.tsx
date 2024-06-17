@@ -38,3 +38,5 @@ describe('deleteEvent testing', () => {
     expect(updatedEvents.length).toBeLessThan(firstEventCount)
   })
 })
+
+// The convention for an integration test testing routes and DB together, that would be located either in the routes folder or the server folder rather than the DB folder.
